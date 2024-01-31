@@ -5,10 +5,10 @@
         <meta charset="utf-8" />
     </head>
     <script src="/scripts/building.js"></script>
-    <script src="/scripts/script.js"></script>
+    <script src="/scripts/script.js" defer></script>
     <body>
         <main>
-            <h1>Score:</h1>
+            <h1>Ethereum (ETH):</h1>
             <h2 id="score">0</h2>
             <button type="button" onclick="scorePlusPlus()">Bake Bread!</button>
             <br />
@@ -16,6 +16,26 @@
                 type="button"
                 id="bakeBagelButton"
                 onclick="bagel.bake()"
+            ></button>
+            <button
+                type="button"
+                id="bakeCroissantButton"
+                onclick="croissant.bake()"
+            ></button>
+            <button
+                type="button"
+                id="bakeDoughnutButton"
+                onclick="doughnut.bake()"
+            ></button>
+            <button
+                type="button"
+                id="bakeCinnamonRollButton"
+                onclick="cinnamonRoll.bake()"
+            ></button>
+            <button
+                type="button"
+                id="bakePieButton"
+                onclick="pie.bake()"
             ></button>
         </main>
     </body>
