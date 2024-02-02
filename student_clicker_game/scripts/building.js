@@ -1,12 +1,13 @@
 class Building {
-    constructor(buttonId, buildingType, price, baseBPS) {
+    constructor(buttonId, buildingType, basePrice, baseBPS) {
         this.price = price;
-        this.baseBPS = baseBPS;
+        this.baseBPS = baseBPS / (1000 / tickRate);
         this.button = document.getElementById(buttonId);
         this.buildingType = buildingType;
     }
 
-    price;
+    basePrice;
+    price = this.basePrice;
     baseBPS;
     currentBPS = 0;
     button;
@@ -16,11 +17,12 @@ class Building {
     // Triggered when the player buys a Building
     bake() {
         score -= this.price;
-        this.price = Math.ceil(this.price * 1.15);
-        this.currentBPS += this.baseBPS;
-        var bakeRate = 1000 / this.currentBPS;
-        setInterval(scorePlusPlus, bakeRate);
         this.buildingCount++;
+        this.price = Math.ceil(this.price * 1.15 ** this.buildingCount);
+        this.currentBPS += this.baseBPS;
+        overallBPS += this.baseBPS;
+        overallBPS = parseFloat(overallBPS.toFixed(1));
+        this.bakeRate = 1000 / this.currentBPS;
     }
 
     // Updates the button, grey if can't afford, price, number owned, etc
